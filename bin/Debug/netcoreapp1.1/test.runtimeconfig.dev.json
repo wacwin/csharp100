@@ -1,0 +1,7 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/zgl/.nuget/packages"
+    ]
+  }
+}
