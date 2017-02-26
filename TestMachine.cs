@@ -48,5 +48,17 @@ namespace Test
             // unless rect's class type is explicitly declared as Rectangle
             rect.MoveTo(10,10);
         }
+
+        public static void TestGenericClass()
+        {
+            IShapeCreator<Shape> sc = RectangleShapeFactory.GetInstance();
+            var shape = sc.Create();
+            var c1 = shape.TransformWithToken("secret_123", (t) => t.GetHashCode());
+            Console.WriteLine($"New token:{c1}");
+            var c2 = shape.TransformWithToken(98001,(t) => 2*t + 1 );
+            Console.WriteLine($"New token:{c2}");
+            
+        }
+
     }
 }

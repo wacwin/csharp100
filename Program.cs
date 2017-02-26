@@ -7,7 +7,7 @@ namespace ConsoleApplication
 
         public static void Main(string[] args)
         {
-            TestMachine.TestClassInheritance();
+            TestMachine.TestGenericClass();
         }
     }
 }
