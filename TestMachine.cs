@@ -3,6 +3,8 @@ using MiniLib;
 
 namespace Test
 {
+    delegate int SingleIntOps(int x);
+
     static class TestMachine
     {
     
@@ -71,6 +73,40 @@ namespace Test
                 Console.WriteLine(s.ToString());
             }
         }
+
+        public static void TestOverflow()
+        {
+            int ten = 10;
+            int i2 = checked(2147483647 + ten);
+            Console.WriteLine(i2);
+        }
+
+        public static TResult TestDelegateRun<T,TResult>(T x, Func<T,TResult> operate){
+            return operate(x);
+        }
+
+        private static void print(double x)
+        {
+            Console.WriteLine(x);
+        }
+        public static void TestDelegate()
+        {
+            int x = 100;
+            Action<double> operations = print;
+            operations += print;
+
+            operations(10.00);
+            Console.WriteLine(TestDelegateRun(x,t => 2*t));
+
+            String firstName = "Hello", lastName="World";
+            Func<string,string,string> concat = (s1,s2) => {
+                return $"{s1} {s2}";
+            } ;
+
+            Console.WriteLine(concat(firstName,lastName));
+        }
+        
+
 
     }
 }
