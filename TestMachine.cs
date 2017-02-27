@@ -60,5 +60,17 @@ namespace Test
             
         }
 
+        public static void TestEnumerator()
+        {
+            Shapes shapes = new Shapes();
+            shapes[0] = new Shape(10,10,200,200);
+            shapes[1] = new Shape(20,20,200,200);
+            shapes[2] = new Shape(30,30,300,300);
+
+            foreach(var s in shapes){
+                Console.WriteLine(s.ToString());
+            }
+        }
+
     }
 }

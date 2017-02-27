@@ -7,6 +7,16 @@ namespace MiniLib
         public Position Position {get;} = new Position();
         public Size Size {get;} = new Size();
 
+        public Shape(){}
+
+        public Shape(int x, int y, int hight, int width)
+        {
+            Position.X = x;
+            Position.Y = y;
+            Size.Height = hight;
+            Size.Height = width;            
+        }
+
         public virtual void Draw() => 
             Console.WriteLine($"Default Shape with Position: {Position} and Size: {Size}.");
         
@@ -22,6 +32,11 @@ namespace MiniLib
             var t = action(token);
             Console.WriteLine($"Your shape has been transformed with the token {token}");
             return t;
+        }
+
+        public override string ToString()
+        {
+            return $"(x:{Position.X},y:{Position.Y},h:{Size.Height},w:{Size.Width})";
         }
     }
 }
