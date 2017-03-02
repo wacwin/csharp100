@@ -1,5 +1,7 @@
 using System;
 using MiniLib;
+using System.Collections;
+using System.Collections.Specialized;
 
 namespace Test
 {
@@ -104,7 +106,30 @@ namespace Test
             } ;
 
             Console.WriteLine(concat(firstName,lastName));
+          
+
         }
+
+        public static void TestObserver()
+        {
+            ObservableSubjects<string> subject = new ObservableSubjects<string>();
+            subject.DataChanged += Print_DataChange;
+            subject.DataChanged += Print_DataLength;
+            subject.Add("iMac");
+            subject.Add("Surface Studio");
+            subject.Add("iPad");
+            subject.Remove("iMac");
+        }
+
+        public static void Print_DataChange(object s, object args){
+            Console.WriteLine(args);
+        }
+
+         public static void Print_DataLength(object s, object args){
+            Console.WriteLine(args.ToString().Length);
+        }
+
+        
         
 
 
